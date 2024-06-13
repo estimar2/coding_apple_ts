@@ -1,6 +1,6 @@
 # TypeScript
 
-<h6>TypeScript 설치</h6>
+<h5>TypeScript 설치</h5>
 
 1. nodejs설치 (최신버전)
 2. Vscode 데이터 준비
@@ -17,7 +17,7 @@
 
 ---
 
-<h6>typesctip 파일은 브라우저에서 인식을 못함</h6>
+<h5>typesctip 파일은 브라우저에서 인식을 못함</h5>
 
 -> js 로 변환해서 사용
 -> tsc -w 명령어 사용
@@ -25,7 +25,7 @@
 
 ---
 
-<h6>React 프로젝트에서 Typescript 사용할 경우</h6>
+<h5>React 프로젝트에서 Typescript 사용할 경우</h5>
 
 1. 이미 있는 react 프로젝트에 설치할 경우
 
@@ -41,7 +41,7 @@
 
 ---
 
-<h6>Vue 프로젝트에서 Typescript 사용할 경우</h6>
+<h5>Vue 프로젝트에서 Typescript 사용할 경우</h5>
 
 1. 작업폴더 경로에서 터미널을 오픈 후
 
@@ -62,7 +62,7 @@ Vue 프로젝트 내에서도 tsconfig.json파일 만들어서 설정도 자유�
 
 ---
 
-<h6>타입스크립트 10분 정리</h6>
+<h5>타입스크립트 10분 정리</h5>
 
 ```
 let 이름 :string = 'kim'
