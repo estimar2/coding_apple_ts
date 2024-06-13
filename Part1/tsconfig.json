@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "CommonJS"
+    "target": "ES5", // ts를 어떤 버전의 js로 바꿔줄지 정하는 부분
+    "module": "CommonJS" // js파일간 import 문법을 구현할 때 어떤 문법을 쓸지 정하는 곳 commonjs 는 require문법, es2015, esnext는 import 문법을 사용
+
+    // IE호환성을 원할경우 es5, commonjs 이용
   }
 }
