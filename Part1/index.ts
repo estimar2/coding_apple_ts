@@ -1,23 +1,21 @@
-type Type2 = {
-  color?: string;
-  size: number;
-  readonly position: number[];
-};
+type CheckType = "가위" | "바위" | "보";
 
-let 숙제2: Type2;
+function 함수(a: CheckType): CheckType[] {
+  let arr = [];
 
-type Type3 = {
-  name: string;
-  phone: number;
-  email: string;
-};
+  arr[0] = a;
 
-let 숙제3: Type3;
+  console.log(arr, ">> arr");
 
-type Type4 = {
-  check: boolean;
-};
+  return arr;
+}
 
-type Type34 = Type3 & Type4;
+함수("가위");
 
-let 숙제4: Type34;
+var 자료 = {
+  name: "kim",
+} as const;
+
+function 내함수(a: "kim") {}
+
+내함수(자료.name);

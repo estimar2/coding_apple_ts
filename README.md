@@ -71,6 +71,7 @@ let 이름 :string = 'kim'
 - 변수명 :타입명
 - 타입으로 쓸 수 있는 것들 : string, number, boolean, bigint, null, undefined, [], {} 등
 - 타입을 지정해놓으면 타입이 의도치 않게 변경될 경우 에러메세지를 띄워줌 -> 타입관련 버그들을 사전에 찾아 없앨 수 있음
+
   <br/>
 
 ```
@@ -105,10 +106,54 @@ let 이름 :NameType = 'kim'
 ```
 type NameType = 'kim' | 'park';
 let 이름 :NameType = 'kim'
+
+ function 함수(a :'hello') :(1 | 0) {
+  reutrn 1
+ }
 ```
 
 - 원하는 글자나 숫자를 입력하면 이름이라는 변수엔 'kim'또는 'park'만 들어올 수 있음
-- literal type 이라고 부름
+- Literal type 이라고 부름
+- 변수에 뭐가 들어올지 더 엄격하게 관리 가능
+- 함수에서도 사용 가능
+
+<br/>
+
+```
+// 문제
+var 자료 = {
+  name : 'kim'
+}
+
+function 내함수(a :'kim'){
+
+}
+
+내함수(자료.name)
+
+// 해결
+var 자료 = {
+  name : 'kim'
+} as const;
+
+function 내함수(a :'kim'){
+
+}
+
+내함수(자료.name)
+```
+
+- 함수는 'kim'타입만 입력할 수 있다고 해놓음 자료.name은 string 타입이지 'kim'타입이 아니기 때문에 에러가 남
+
+  - 해결방법
+
+    1. object 만들때 타입을 잘 정하기
+    2. assertion 사용
+    3. as const 를 object자료에 사용
+
+       - as const 의 효과
+         1. 타입을 object의 value로 바꿔줌
+         2. object안에 있는 모든 속성을 readonly로 바꿔줌
 
 <br/>
 
@@ -277,10 +322,6 @@ let 철수 :MyObject = {
 - object안에 어떤 속성이 들어갈지 아직 모른다면 전부 타입지정도 가능
 - index signature라고 함
 
-* const 변수는 등호로 재할당만 막는 역할
-  - const 로 담은 object 수정은 자유롭게 가능
-    - typescript 쓰면 object자료 수정도 막을 수 있음
-
 <br/>
 
 ```
@@ -316,7 +357,8 @@ class User {
 ---
 
 <h3>tsconfig 에 들어갈 기타 항목들</h3>
-대부분 건드릴 필요X, 쓸모있어보이는 것들만 추려봄
+대부분 건드릴 필요X,
+
 전체는 <a href='https://www.typescriptlang.org/tsconfig' >https://www.typescriptlang.org/tsconfig</a> 에서 구경 가능
 
 ```
