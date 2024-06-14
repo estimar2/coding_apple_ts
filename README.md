@@ -120,7 +120,7 @@ let 이름 :NameType = 'kim'
 <br/>
 
 ```
-// 문제
+// 에러
 var 자료 = {
   name : 'kim'
 }
@@ -131,7 +131,7 @@ function 내함수(a :'kim'){
 
 내함수(자료.name)
 
-// 해결
+// 가능
 var 자료 = {
   name : 'kim'
 } as const;
@@ -202,6 +202,22 @@ function 함수명3(x? :number) :void {
 - 파라미터가 옵션일 경우
   - 파라미터변수? : 타입
   - 변수? : number 는 변수 :number | undefined 랑 같음
+
+<br/>
+
+```
+type FuncType = (a :number, b :number) => number;
+
+let 함수 :FuncType = function(x, y) {
+  return x + y
+}
+```
+
+- type alias에 함수 type 저장해서 사용할 수 있음
+  1. 함수타입은 () => {} 모양으로
+  2. 함수표현식에만 type alias 사용가능
+     - arrow function 문법 : (파라미터) => {}
+     - 일반 function 문법 : function(파라미터) {}
 
 <br/>
 
