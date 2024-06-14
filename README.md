@@ -136,10 +136,24 @@ let 이름 :unknown;
 function 함수명(x :number) :number {
   return x * 2
 }
+
+function 함수명2(x :number) :void {
+  return x * 2
+}
+
+function 함수명3(x? :number) :void {
+  return x * 2
+}
 ```
 
+- 타입스크립트 함수는 타입지정된 파라미터 필수
 - 함수는 파라미터와 reutrn 값이 어떤 타입일지 지정 가능
-- return 타입으로 void 설정가능한데 return 이 없는지 체크할 수 있는 타입
+- return 타입으로 void 설정가능
+  - return할 자료가 없는 함수의 타입으로 사용 가능
+  - 실수로 뭔가 return 하는걸 사전에 막을 수 있음
+- 파라미터가 옵션일 경우
+  - 파라미터변수? : 타입
+  - 변수? : number 는 변수 :number | undefined 랑 같음
 
 <br/>
 
