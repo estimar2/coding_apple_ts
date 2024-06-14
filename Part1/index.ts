@@ -1,43 +1,42 @@
-function 함수(x?: string): string {
-  if (x) {
-    console.log("이름이 없습니다.");
+function 함수(x: number | string) {
+  let arr: number[] = [];
+
+  arr[0] = x as number;
+}
+
+함수(123);
+
+function 숙제(x: (number | string)[]) {
+  let arr: number[] = [];
+
+  x.forEach(data => {
+    if (typeof data === "string") {
+      arr.push(parseFloat(data));
+    } else {
+      arr.push(data);
+    }
+  });
+
+  console.log(arr);
+}
+
+숙제([123, "3"]);
+
+let 철수쌤 = { subject: "math" };
+let 영희쌤 = { subject: ["science", "english"] };
+let 민수쌤 = { hello: "hi" };
+
+function 숙제2(x: { subject: string | string[] }): string {
+  if (typeof x.subject === "string") {
+    console.log(x.subject, ">>> string");
     return;
+  } else if (Array.isArray(x.subject)) {
+    console.log(x.subject[x.subject.length - 1], ">>> array");
+    return x.subject[x.subject.length - 1];
   } else {
-    console.log(`안녕하세요 ${x}입니다.`);
-    return;
+    console.log("읎다");
+    return "subject 읎따";
   }
 }
 
-함수("홍길동");
-
-function 함수2(x: number | string): number {
-  console.log(x.toString().length);
-  return;
-}
-
-함수2("234");
-
-function 함수3(money: number, home: boolean, charm: string): string | void {
-  let total: number = 0;
-
-  if (money) {
-    total = money;
-  }
-
-  if (home) {
-    total += 500;
-  }
-
-  if (charm === "상") {
-    total += 100;
-  }
-
-  if (total >= 600) {
-    console.log("결혼가능");
-    return `결혼가능`;
-  } else {
-    console.log("결혼불가능");
-  }
-}
-
-함수3(700, false, "중");
+숙제2({ subject: ["english", "art"] });

@@ -1,36 +1,36 @@
 function 함수(x) {
-    if (x) {
-        console.log("이름이 없습니다.");
+    var arr = [];
+    arr[0] = x;
+}
+함수(123);
+function 숙제(x) {
+    var arr = [];
+    x.forEach(function (data) {
+        if (typeof data === "string") {
+            arr.push(parseFloat(data));
+        }
+        else {
+            arr.push(data);
+        }
+    });
+    console.log(arr);
+}
+숙제([123, "3"]);
+var 철수쌤 = { subject: "math" };
+var 영희쌤 = { subject: ["science", "english"] };
+var 민수쌤 = { hello: "hi" };
+function 숙제2(x) {
+    if (typeof x.subject === "string") {
+        console.log(x.subject, ">>> string");
         return;
     }
-    else {
-        console.log("\uC548\uB155\uD558\uC138\uC694 ".concat(x, "\uC785\uB2C8\uB2E4."));
-        return;
-    }
-}
-함수("홍길동");
-function 함수2(x) {
-    console.log(x.toString().length);
-    return;
-}
-함수2("234");
-function 함수3(money, home, charm) {
-    var total = 0;
-    if (money) {
-        total = money;
-    }
-    if (home) {
-        total += 500;
-    }
-    if (charm === "상") {
-        total += 100;
-    }
-    if (total >= 600) {
-        console.log("결혼가능");
-        return "\uACB0\uD63C\uAC00\uB2A5";
+    else if (Array.isArray(x.subject)) {
+        console.log(x.subject[x.subject.length - 1], ">>> array");
+        return x.subject[x.subject.length - 1];
     }
     else {
-        console.log("결혼불가능");
+        console.log("읎다");
+        return "subject 읎따";
     }
 }
-함수3(700, false, "중");
+숙제2({ subject: ["english", "art"] });
