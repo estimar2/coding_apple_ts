@@ -96,6 +96,9 @@ let 이름 :NameType = 'kim'
 ```
 
 - type 키워드를 이용해 타입을 변수처럼 담아서 사용 가능
+- type 키워드 쓰는것 = type alias
+- type 변수명 = 타입종류
+  - 변수명은 관습적으로 대문자로 시작
 
 <br/>
 
@@ -237,6 +240,31 @@ let 철수 :MyObject = {
 <br/>
 
 ```
+type Atype = string;
+type Btype = number;
+
+type Person = Atype | Btype
+```
+
+- union type으로 type 합치기
+
+<br/>
+
+```
+type Atype = {x :number};
+type Btype = {y :number};
+
+type NewType = Atype & Btype
+
+let position :NewType = { x : 10, y : 20}
+```
+
+- &연산자로 object 타입 extend하기
+- Type alias & Type alias 만 가능한게 아니라 Type alias & {name : string} 이런것도 가능
+
+<br/>
+
+```
 type MyObject = {
   [key :string] : number,
 }
@@ -248,6 +276,28 @@ let 철수 :MyObject = {
 
 - object안에 어떤 속성이 들어갈지 아직 모른다면 전부 타입지정도 가능
 - index signature라고 함
+
+* const 변수는 등호로 재할당만 막는 역할
+  - const 로 담은 object 수정은 자유롭게 가능
+    - typescript 쓰면 object자료 수정도 막을 수 있음
+
+<br/>
+
+```
+const locate = { region : 'seoul'}
+locate.region = 'busan'
+
+type girlType = {
+  readonly name : string
+}
+const girl :girlType = {name : 'kim'}
+girl.name = 'lee'
+```
+
+- const 변수는 등호로 재할당만 막는 역할
+  - const 로 담은 object 수정은 자유롭게 가능
+    - typescript 쓰면 object자료 수정할때 에러 보여줌(readonly)
+    - readonly는 컴파일시 에러를 내는 것일 뿐 번환된 js파일보면 잘 작동됨
 
 <br/>
 

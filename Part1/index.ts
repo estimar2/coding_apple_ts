@@ -1,42 +1,23 @@
-function 함수(x: number | string) {
-  let arr: number[] = [];
+type Type2 = {
+  color?: string;
+  size: number;
+  readonly position: number[];
+};
 
-  arr[0] = x as number;
-}
+let 숙제2: Type2;
 
-함수(123);
+type Type3 = {
+  name: string;
+  phone: number;
+  email: string;
+};
 
-function 숙제(x: (number | string)[]) {
-  let arr: number[] = [];
+let 숙제3: Type3;
 
-  x.forEach(data => {
-    if (typeof data === "string") {
-      arr.push(parseFloat(data));
-    } else {
-      arr.push(data);
-    }
-  });
+type Type4 = {
+  check: boolean;
+};
 
-  console.log(arr);
-}
+type Type34 = Type3 & Type4;
 
-숙제([123, "3"]);
-
-let 철수쌤 = { subject: "math" };
-let 영희쌤 = { subject: ["science", "english"] };
-let 민수쌤 = { hello: "hi" };
-
-function 숙제2(x: { subject: string | string[] }): string {
-  if (typeof x.subject === "string") {
-    console.log(x.subject, ">>> string");
-    return;
-  } else if (Array.isArray(x.subject)) {
-    console.log(x.subject[x.subject.length - 1], ">>> array");
-    return x.subject[x.subject.length - 1];
-  } else {
-    console.log("읎다");
-    return "subject 읎따";
-  }
-}
-
-숙제2({ subject: ["english", "art"] });
+let 숙제4: Type34;
