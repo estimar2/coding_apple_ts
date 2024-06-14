@@ -1,32 +1,45 @@
-var 회원정보 = {
-    name: "kim",
-    age: 30,
-    aFunc: function (x) {
-        return x + 1;
-    },
-    bFunc: function () {
-        console.log("안녕");
-        return;
-    },
-};
-회원정보.aFunc(1);
-회원정보.bFunc();
-var cutZero = function (x) {
-    var result = x.replace(/^0+/, "");
-    console.log(result, ">> cutZero");
-    return result;
-};
-var removeDash = function (x) {
-    var result = x.replace(/-/g, "");
-    console.log(result, ">> removeDash");
-    return Number(result);
-};
-cutZero("01");
-removeDash("010-1234-5678");
-var totalFunc = function (a, cutZero, removeDash) {
-    var result = cutZero(a);
-    var result2 = removeDash(result);
-    console.log(result2);
-    return result2;
-};
-totalFunc("010-1234-5678", cutZero, removeDash);
+var 제목 = document.querySelector("#title");
+// narrowing 방법 1
+if (제목 != null) {
+    제목.innerHTML = "반가워요";
+}
+// narrowing 방법 2 (가장 많이 쓰게됨)
+if (제목 instanceof Element) {
+    제목.innerHTML = "반가워요";
+}
+// narrowing 방법 3 (assertion)
+var 제목2 = document.querySelector("#title");
+제목2.innerHTML = "반가워요";
+// narrowing 방법 4 (?. = optional chaining 연산자 사용)
+if (제목 === null || 제목 === void 0 ? void 0 : 제목.innerHTML) {
+    제목.innerHTML = "반가워요";
+}
+if ((제목 === null || 제목 === void 0 ? void 0 : 제목.innerHTML) !== undefined) {
+    제목.innerHTML = "반가워요";
+}
+// narrowing 방법 5
+// tsconfig 에서 strict 모드 끄는 방법
+// ------------------------------------------------
+var 링크 = document.querySelector(".link");
+if (링크 instanceof HTMLAnchorElement) {
+    링크.href = "https://kakao.com";
+}
+// ------------------------------------------------
+var 버튼 = document.querySelector("#button");
+버튼 === null || 버튼 === void 0 ? void 0 : 버튼.addEventListener("click", function () { });
+// if(버튼 instanceof HTMLButtonElement){
+//     버튼?.addEventListener('click', () => {
+//     })
+// }
+// ------------------------------------------------
+var 이미지 = document.querySelector("#image");
+if (이미지 instanceof HTMLImageElement) {
+    이미지.src = "./img/sync_disabled.png";
+}
+// ------------------------------------------------
+var 모든링크 = document.querySelectorAll(".naver");
+모든링크.forEach(function (a) {
+    if (a instanceof HTMLAnchorElement) {
+        a.href = "https://kakao.com";
+    }
+});

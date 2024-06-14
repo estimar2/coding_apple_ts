@@ -1,66 +1,65 @@
-type Type1 = {
-  name: string;
-  age: number;
-  aFunc: (x: number) => number;
-  bFunc: () => void;
-};
+let 제목 = document.querySelector("#title");
 
-let 회원정보: Type1 = {
-  name: "kim",
-  age: 30,
-  aFunc(x) {
-    return x + 1;
-  },
-  bFunc: () => {
-    console.log("안녕");
-    return;
-  },
-};
+// narrowing 방법 1
+if (제목 != null) {
+  제목.innerHTML = "반가워요";
+}
 
-회원정보.aFunc(1);
-회원정보.bFunc();
+// narrowing 방법 2 (가장 많이 쓰게됨)
+if (제목 instanceof Element) {
+  제목.innerHTML = "반가워요";
+}
 
-// ------------------------------------------
+// narrowing 방법 3 (assertion)
+let 제목2 = document.querySelector("#title") as Element;
+제목2.innerHTML = "반가워요";
 
-type ZeroType = (x: string) => string;
+// narrowing 방법 4 (?. = optional chaining 연산자 사용)
+if (제목?.innerHTML) {
+  제목.innerHTML = "반가워요";
+}
 
-let cutZero: ZeroType = x => {
-  let result = x.replace(/^0+/, "");
+if (제목?.innerHTML !== undefined) {
+  제목.innerHTML = "반가워요";
+}
 
-  console.log(result, ">> cutZero");
+// narrowing 방법 5
+// tsconfig 에서 strict 모드 끄는 방법
 
-  return result;
-};
+// ------------------------------------------------
 
-type DashType = (x: string) => number;
+let 링크 = document.querySelector(".link");
 
-let removeDash: DashType = x => {
-  let result = x.replace(/-/g, "");
+if (링크 instanceof HTMLAnchorElement) {
+  링크.href = "https://kakao.com";
+}
 
-  console.log(result, ">> removeDash");
+// ------------------------------------------------
 
-  return Number(result);
-};
+let 버튼 = document.querySelector("#button");
 
-cutZero("01");
-removeDash("010-1234-5678");
+버튼?.addEventListener("click", () => {});
 
-// ------------------------------------------
+// if(버튼 instanceof HTMLButtonElement){
+//     버튼?.addEventListener('click', () => {
 
-type TcutZeroType = (x: string) => string;
-type TremoveDathType = (x: string) => number;
+//     })
+// }
 
-let totalFunc = (
-  a: string,
-  cutZero: TcutZeroType,
-  removeDash: TremoveDathType,
-) => {
-  let result = cutZero(a);
-  let result2 = removeDash(result);
+// ------------------------------------------------
 
-  console.log(result2);
+let 이미지 = document.querySelector("#image");
 
-  return result2;
-};
+if (이미지 instanceof HTMLImageElement) {
+  이미지.src = "./img/sync_disabled.png";
+}
 
-totalFunc("010-1234-5678", cutZero, removeDash);
+// ------------------------------------------------
+
+let 모든링크 = document.querySelectorAll(".naver");
+
+모든링크.forEach(a => {
+  if (a instanceof HTMLAnchorElement) {
+    a.href = "https://kakao.com";
+  }
+});

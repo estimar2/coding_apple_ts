@@ -7,6 +7,6 @@
 
     // 추가로 넣을만한 것들
     "noImplicitAny": false, // any라는 타입이 의도치않게 발생할 경우 에러를 띄워주는 설정
-    "strictNullChecks": false // null, undefined 타입에 이상한 조작하면 에러를 띄우는 설정
+    "strictNullChecks": true // null, undefined 타입에 이상한 조작하면 에러를 띄우는 설정
   }
 }
